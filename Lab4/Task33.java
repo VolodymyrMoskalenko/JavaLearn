@@ -1,11 +1,11 @@
 package lab04;
 
 /**
- * Lab 04, Task 3
+ * Lab 04, Task 33
  *
  * @author Moskalenko Volodymyr
  */
-public class Task3 {
+public class Task33 {
 
     /**
      * Entry point. Tests the method {@code calculateParams(int [] arr)} by calling the helper
@@ -57,18 +57,28 @@ public class Task3 {
      * @return result of math operations
      */
     static int calculateParams(int [] arr) {
-        if(arr.length < 1)
+        if(arr.length < 2)
         {
             throw new IllegalArgumentException("length = 0 ");
         }
 
-        int max = arr[0];
-        for (int i = 1; i < arr.length; i++){
-            if (arr[i]>max) {
+        int sum = arr[1];
+        int max = 0;
+        int i = 0;
+        for (; i < arr.length; i++){
+            if (arr[i] > 0) {
                 max = arr[i];
+                break;
             }
         }
-        return max;
+        for (int k = i + 1; k < arr.length; k++){
+            if ( (arr[k] > max) && (arr[k] > 0) ) {
+                max = arr[k];
+            }
+        }
+
+        sum += max;
+        return sum;
     }
 }
 

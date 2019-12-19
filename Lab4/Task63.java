@@ -1,11 +1,11 @@
 package lab04;
 
 /**
- * Lab 04, Task 3
+ * Lab 04, Task 63
  *
  * @author Moskalenko Volodymyr
  */
-public class Task3 {
+public class Task63 {
 
     /**
      * Entry point. Tests the method {@code calculateParams(int [] arr)} by calling the helper
@@ -32,7 +32,6 @@ public class Task3 {
         printResults(arr8);
         int [] arr9 = {1,2,(int)Double.NaN,3,4,5};
         printResults(arr9);
-
     }
 
     /**
@@ -41,11 +40,19 @@ public class Task3 {
      * @params int [] arr the entire parameter for {@code printResults function }
      */
     static void printResults(int [] arr) {
-        int res = 0;
+        int [] res ;
 
         try {
             res = calculateParams(arr);
-            System.out.println(res);
+            for (int k = 0; k < res.length; k++){
+                if(k == res.length-1){
+                    System.out.print(res[k]);
+                }
+                else {
+                    System.out.print(res[k] + ",");
+                }
+            }
+            System.out.println();
         } catch (IllegalArgumentException e){
             System.out.println("EXCEPTION!" + e.getMessage());
         }
@@ -56,19 +63,34 @@ public class Task3 {
      * @params int [] arr the entire parameter.
      * @return result of math operations
      */
-    static int calculateParams(int [] arr) {
+    static int[] calculateParams(int [] arr) {
         if(arr.length < 1)
         {
             throw new IllegalArgumentException("length = 0 ");
         }
 
+        int sum = 0;
         int max = arr[0];
-        for (int i = 1; i < arr.length; i++){
-            if (arr[i]>max) {
+        int [] dubl = new int[arr.length];
+        for (int i = 0; i < arr.length; i++){
+            if (arr[i] > max) {
                 max = arr[i];
             }
         }
-        return max;
+
+        for (int k = 0; k < arr.length; k++){
+            if (arr[k] > 0) {
+                dubl[k] = 2*arr[k];
+            }
+            else if (arr[k] < 0) {
+                dubl[k] = arr[k] + max;
+            }
+            else {
+                dubl[k] = 1;
+            }
+        }
+
+        return dubl;
     }
 }
 
