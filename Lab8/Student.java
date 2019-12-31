@@ -1,19 +1,36 @@
 package lab08;
+import lab08.Human;
+public class Student extends Human {
+    public String group="абитуриент";
 
-public class Student {
-    String name;
-    String surname;
-    int number;
-    String group;
-
-    Student(String n, String s, int a, String g){
-        name = n;
-        surname = s;
-        number = a;
-        group = g;
+    public Student(String surname, String name, String patronymic, boolean sex,
+                   String birthDate, String location) {
+        super(surname, name, patronymic, sex, birthDate, location);
     }
 
-    void about(){
-        System.out.printf("Name: %s \nSurname: %s \nNumber in group: %d \nGroup: %s \n",name,surname,number,group);
+    public Student(String surname, String name, String patronymic) {
+        super(surname, name, patronymic);
+    }
+
+    public void printInfo() {
+        super.printInfo();
+        System.out.println(" " + group);
+    }
+
+    public void shortPrintInfo() {
+        super.shortPrintInfo();
+    }
+
+    @Override
+    public void shortPrintInfo(String group) {
+        super.shortPrintInfo(group);
+    }
+
+    public String getGroup() {
+        return group;
+    }
+
+    public void setGroup(String group) {
+        this.group = group;
     }
 }
