@@ -41,6 +41,7 @@ class Actor{
                 resultList.add(actor);
             }
         }
+        System.out.print("notFilmed: ");
         for(Actor model : resultList) {
             System.out.println(model.getName());
         }
